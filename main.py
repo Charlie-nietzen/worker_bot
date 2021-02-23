@@ -20,7 +20,7 @@ client = commands.Bot(command_prefix=prefix)
 
 cashier_employers = ['Lidl', 'Aldi', 'Sainsbury\'s', 'Morrison\'s', 'Tesco', 'Premier', 'Londis']
 fastfood_employers = ['KFC', 'McDonalds', 'Subway', 'Taco Bell']
-stocker_employers = ['Halford\'s', 'B&Q', 'Ikea', 'The Range']
+stocker_employers = ['Halford\'s', 'B&Q', 'Ikea', 'The Range', 'Home Bargains']
 
 ## JOB COMMANDS START ## 
 
