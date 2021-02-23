@@ -37,7 +37,16 @@ async def initialise(author):
         with open(path+r'/resources/user_data.json', 'w') as f:
             json.dump(user_info, f)
 
-@client.command()
+async def add_money(author, amount):
+        with open(path+r'/resources/user_data.json', 'r') as f:
+            user_info = json.load(f)
+
+        user_info[author.id]['balance'] += amount
+
+        with open(path+r'/resources/user_data.json', 'w') as f:
+            json.dump(user_info, f)
+
+@client.command(aliases=['job'])
 async def findjob(ctx):
     await initialise(ctx.author)
 
@@ -72,6 +81,44 @@ async def apply(ctx, *, choice):
         with open(path+r'/resources/user_data.json', 'w') as f:
             json.dump(user_info, f)
 
+async def work_embed(ctx, action, value):
+    embed = discord.Embed(
+        colour=0xd400ff,
+        title=f"{action} :money_with_wings:",
+    )
+
+    embed.add_field(name="Pay", value=f"``£{value:,d}``")
+    embed.add_field(name="Recognition", value=f"``{random.randint(1,100)}%``")
+
+    await ctx.channel.send(embed=embed)
+
+@client.command()
+async def work(ctx):
+    await initialise(ctx.author)
+
+    with open(path+r'/resources/user_data.json', 'r') as f:
+            user_info = json.load(f)
+
+    # FASTFOOD START
+
+    if user_info[str(ctx.author.id)]['career'] == 'Fastfood Cook':
+        await work_embed(ctx, 'Burger Flipped', 3)
+
+    # FASTFOOD END
+
+    # CASHIER START
+
+    elif user_info[str(ctx.author.id)]['career'] == '':
+        await work_embed(ctx, 'Shopping Scanned', 1.5)
+    
+    # CASHIER END
+
+    # SHELF STOCKER START
+
+    elif user_info[str(ctx.author.id)]['career'] == 'Shelf Stocker':
+        await work_embed(ctx, 'Shelf Stacked', 2)
+
+    # SHELF STOCKER END
 
 ## JOB COMMANDS END ## 
 
@@ -95,11 +142,11 @@ async def stats(message, member: typing.Union[discord.Member, str] = None):
     rank = str(user_info[str(user.id)]['rank'])
 
     stats = discord.Embed(
-        colour=0x00ff55,
-        title=f"{user.name}\'s Balance :money_with_wings:",
+        colour=0xd400ff,
+        title=f'{user.name}\'s Stats :money_with_wings:',
     )
 
-    stats.add_field(name="Balance", value=f'``{bal:,d} coins``')
+    stats.add_field(name='Balance', value=f'``£{bal:,d}``')
     stats.add_field(name='Career', value=f'``{job}``')
     stats.add_field(name='Rank', value=f'``{rank}``')
 
