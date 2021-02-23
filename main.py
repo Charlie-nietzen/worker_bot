@@ -41,7 +41,7 @@ async def add_money(author, amount):
         with open(path+r'/resources/user_data.json', 'r') as f:
             user_info = json.load(f)
 
-        user_info[author.id]['balance'] += amount
+        user_info[str(author.id)]['balance'] += amount
 
         with open(path+r'/resources/user_data.json', 'w') as f:
             json.dump(user_info, f)
@@ -90,6 +90,7 @@ async def work_embed(ctx, action, value):
     embed.add_field(name="Pay", value=f"``£{value}``")
     embed.add_field(name="Recognition", value=f"``{random.randint(1,100)}%``")
 
+    await add_money(ctx.author, value)
     await ctx.channel.send(embed=embed)
 
 @client.command()
