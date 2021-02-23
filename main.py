@@ -22,7 +22,7 @@ client = commands.Bot(command_prefix=prefix)
 @client.event
 async def on_command_error(ctx, error):
     await ctx.message.delete()
-    err = await ctx.channel.send(f'``{error}``')
+    err = await ctx.channel.send(f'{ctx.author.mention} ``{error}``')
     await asyncio.sleep(3)
     await err.delete()
 
@@ -32,7 +32,9 @@ cashier_employers = ['Lidl', 'Aldi', 'Sainsbury\'s', 'Morrison\'s', 'Tesco', 'Pr
 fastfood_employers = ['KFC', 'McDonalds', 'Subway', 'Taco Bell']
 stocker_employers = ['Halford\'s', 'B&Q', 'Ikea', 'The Range', 'Home Bargain\'s']
 
-## JOB COMMANDS START ## 
+victims = ['a blind woman', 'a blind man', 'a dog', 'a business person', 'a furry', 'Jeff Bezos', 'Patrick Gaming']
+sucess_phrases = ['got away with the cash', 'ran away with the cash', 'ran away with the money', 'got away with the money']
+fail_phrases = ['was beaten up', 'got sucker punched', 'was knocked out', 'was stabbed', 'was caught']
 
 async def initialise(author):
     with open(path+r'/resources/user_data.json', 'r') as f:
@@ -55,6 +57,30 @@ async def add_money(author, amount):
 
         with open(path+r'/resources/user_data.json', 'w') as f:
             json.dump(user_info, f)
+
+
+## FREELANCE COMMANDS START ##
+
+@client.command()
+@commands.cooldown(1, 600, commands.BucketType.user)
+async def pickpocket(ctx):
+    await initialise(ctx.author)
+
+    victim = random.choice(victims)
+    value = random.randint(5,25)
+
+    sucess = random.randint(1,100)
+    if sucess >= 10:
+        await add_money(ctx.author, value)
+        await ctx.channel.send(f'``You attempted to pickpocket {victim} for £{value} and {random.choice(sucess_phrases)}.``')
+    else:
+        await add_money(ctx.author, -value)
+        await ctx.channel.send(f'``You attempted to pickpocket {victim} and {random.choice(fail_phrases)}. You lost £{value} in the process.``')
+
+
+## FREELANCE COMMANDS END ##
+
+## JOB COMMANDS START ## 
 
 @client.command(aliases=['job'])
 async def findjob(ctx):
