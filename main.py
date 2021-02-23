@@ -30,7 +30,7 @@ async def on_command_error(ctx, error):
 
 cashier_employers = ['Lidl', 'Aldi', 'Sainsbury\'s', 'Morrison\'s', 'Tesco', 'Premier', 'Londis']
 fastfood_employers = ['KFC', 'McDonalds', 'Subway', 'Taco Bell']
-stocker_employers = ['Halford\'s', 'B&Q', 'Ikea', 'The Range', 'Home Bargains']
+stocker_employers = ['Halford\'s', 'B&Q', 'Ikea', 'The Range', 'Home Bargain\'s']
 
 ## JOB COMMANDS START ## 
 
