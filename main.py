@@ -1,3 +1,4 @@
+import os
 import json
 import random
 import typing
@@ -9,6 +10,9 @@ name = 'Worker Bot'
 path = 'G:/worker_bot'
 version = '1.0'
 prefix = '$'
+
+settings = json.load(open(path+'/config.json'))
+token = settings['token']
 
 client = commands.Bot(command_prefix=prefix)
 
@@ -103,4 +107,4 @@ async def stats(message, member: typing.Union[discord.Member, str] = None):
 
 ## STAT COMMANDS END ##
 
-client.run('ODEzODEzNzc3NjAxNjU4OTQw.YDUxJA.i-5T7nJjBz5ihUqjJJbNi0r_d4g')
+client.run(token)
