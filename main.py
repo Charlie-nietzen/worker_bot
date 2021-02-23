@@ -7,11 +7,11 @@ import discord
 from discord.ext import commands
 
 name = 'Worker Bot'
-path = 'G:/worker_bot'
 version = '1.0'
 prefix = '$'
 
-settings = json.load(open(path+'/config.json'))
+path = os.path.dirname(os.path.abspath(__file__))
+settings = json.load(open(os.path.join(path, 'config.json')))
 token = settings['token']
 
 client = commands.Bot(command_prefix=prefix)
