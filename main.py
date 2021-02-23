@@ -2,6 +2,7 @@ import os
 import json
 import random
 import typing
+import asyncio
 import discord
 
 from discord.ext import commands
@@ -15,6 +16,15 @@ settings = json.load(open(os.path.join(path, 'config.json')))
 token = settings['token']
 
 client = commands.Bot(command_prefix=prefix)
+
+## ERROR HANDLING
+
+@client.event
+async def on_command_error(ctx, error):
+    await ctx.message.delete()
+    err = await ctx.channel.send(f'``{error}``')
+    await asyncio.sleep(3)
+    await err.delete()
 
 ### CURRENCY COMMANDS START ###
 
@@ -94,6 +104,7 @@ async def work_embed(ctx, action, value):
     await ctx.channel.send(embed=embed)
 
 @client.command()
+@commands.cooldown(1, 20, commands.BucketType.user)
 async def work(ctx):
     await initialise(ctx.author)
 
