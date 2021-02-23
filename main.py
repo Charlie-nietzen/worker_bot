@@ -51,7 +51,7 @@ async def findjob(ctx):
     await initialise(ctx.author)
 
     job_menu = discord.Embed(title='The Job Centre :money_with_wings:', color=0xd400ff)
-    job_menu.add_field(name='Cashier', value=f'Wage - £1.50 Per Work\nEmployer - {random.choice(cashier_employers)}', inline=True)
+    job_menu.add_field(name='Cashier', value=f'Wage - £1 Per Work\nEmployer - {random.choice(cashier_employers)}', inline=True)
     job_menu.add_field(name='Fastfood Cook', value=f'Wage - £3 Per Work\nEmployer - {random.choice(fastfood_employers)}', inline=True)
     job_menu.add_field(name='Shelf Stocker', value=f'Wage - £2 Per Work\nEmployer - {random.choice(stocker_employers)}', inline=True)
     job_menu.set_footer(text=f'Type {prefix}apply followed by the job title to get started.')
@@ -87,7 +87,7 @@ async def work_embed(ctx, action, value):
         title=f"{action} :money_with_wings:",
     )
 
-    embed.add_field(name="Pay", value=f"``£{value:,d}``")
+    embed.add_field(name="Pay", value=f"``£{value}``")
     embed.add_field(name="Recognition", value=f"``{random.randint(1,100)}%``")
 
     await ctx.channel.send(embed=embed)
@@ -108,8 +108,8 @@ async def work(ctx):
 
     # CASHIER START
 
-    elif user_info[str(ctx.author.id)]['career'] == '':
-        await work_embed(ctx, 'Shopping Scanned', 1.5)
+    elif user_info[str(ctx.author.id)]['career'] == 'Cashier':
+        await work_embed(ctx, 'Shopping Scanned', 1)
     
     # CASHIER END
 
