@@ -17,7 +17,7 @@ token = settings['token']
 
 client = commands.Bot(command_prefix=prefix)
 
-## ERROR HANDLING
+### ERROR HANDLING
 
 @client.event
 async def on_command_error(ctx, error):
@@ -25,6 +25,22 @@ async def on_command_error(ctx, error):
     err = await ctx.channel.send(f'{ctx.author.mention} ``{error}``')
     await asyncio.sleep(3)
     await err.delete()
+
+### HELP COMMAND
+
+client.remove_command('help')
+@client.command()
+async def help(ctx):
+    embed = discord.Embed(
+        colour=0x00ff2a,
+        title=f'{name} {version}',
+    )
+
+    embed.add_field(name='Careers :briefcase:', value='apply\nfindjob\nwork\nquit')
+    embed.add_field(name='Crime :knife:', value ='pickpocket\nbankrobbery\nhack\nsteal')
+    embed.add_field(name='Stats :notepad_spiral:', value ='stats\nworkout\nlibary')
+
+    await ctx.send(embed=embed)
 
 ### CURRENCY COMMANDS START ###
 
