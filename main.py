@@ -52,6 +52,8 @@ victims = ['a blind woman', 'a blind man', 'a dog', 'a business person', 'a furr
 sucess_phrases = ['got away with the cash', 'ran away with the cash', 'ran away with the money', 'got away with the money']
 fail_phrases = ['was beaten up', 'got sucker punched', 'was knocked out', 'was stabbed', 'was caught']
 
+hacking_status = ['breaching mainframe', 'accessing CPU pins', 'a couple gigabytes of RAM']
+
 async def initialise(author):
     with open(path+r'/resources/user_data.json', 'r') as f:
             user_info = json.load(f)
@@ -93,6 +95,22 @@ async def pickpocket(ctx):
         await add_money(ctx.author, -value)
         await ctx.channel.send(f'``You attempted to pickpocket {victim} and {random.choice(fail_phrases)}. You lost £{value} in the process.``')
 
+@client.command()
+@commands.cooldown(1, 1200, commands.BucketType.user)
+async def hack(ctx):
+    await initialise(ctx.author)
+
+    first = random.choice(hacking_status)
+    second = random.choice(hacking_status)
+
+    while first == second:
+        first = random.choice(hacking_status)
+
+    embed = discord.Embed(colour=0x00ff55, title=f"{first}...",)
+    message = await ctx.channel.send(embed=embed)
+    await asyncio.sleep(1)
+    embed = discord.Embed(colour=0x00ff55, title=f"{second}...",)
+    await message.edit(embed=embed)
 
 ## FREELANCE COMMANDS END ##
 
