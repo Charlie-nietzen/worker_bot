@@ -12,9 +12,6 @@ version = '1.0'
 prefix = '$'
 
 path = os.path.dirname(os.path.abspath(__file__))
-settings = json.load(open(os.path.join(path, 'config.json')))
-token = settings['token']
-
 client = commands.Bot(command_prefix=prefix)
 
 ### ERROR HANDLING
@@ -226,4 +223,4 @@ async def stats(message, member: typing.Union[discord.Member, str] = None):
 
 ## STAT COMMANDS END ##
 
-client.run(token)
+client.run(os.environ['DISCORD_TOKEN'])
