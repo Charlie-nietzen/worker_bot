@@ -219,7 +219,7 @@ async def stats(message, member: typing.Union[discord.Member, str] = None):
     with open(path+r'/resources/user_data.json', 'r') as f:
             user_info = json.load(f)
 
-    if type(member) == discord.Member: ## if a user is mentioned
+    if type(member) == discord.Member: # if a user is mentioned
         user = member
         await initialise(user)
     else:
