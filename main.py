@@ -146,15 +146,15 @@ async def findjob(ctx):
                  choices=[
                   create_choice(
                     name="Cashier",
-                    value="Cashier"
+                    value="cashier"
                   ),
                   create_choice(
                     name="Fastfood Cook",
-                    value="Fastfood Cook"
+                    value="fastfood cook"
                   ),
                   create_choice(
                     name="Shelf Stocker",
-                    value="Shelf Stocker"
+                    value="shelf stocker"
                   ),
                 ]
                )
