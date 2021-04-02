@@ -78,7 +78,8 @@ async def add_money(author, amount):
 
 ## FREELANCE COMMANDS START ##
 
-@slash.slash(name="Pickpocket", description="Steal from a strangers pocket - 600s cooldown")
+@slash.slash(name="pickpocket", description="Steal from a strangers pocket - 600s cooldown")
+@client.command()
 @commands.cooldown(1, 600, commands.BucketType.user)
 async def pickpocket(ctx):
     await initialise(ctx.author)
@@ -127,6 +128,7 @@ async def findjob(ctx):
 
     await ctx.send(embed=job_menu)
 
+@slash.slash(name="apply", description="Apply for a job")
 @client.command()
 async def apply(ctx, *, choice):
     await initialise(ctx.author)
@@ -162,6 +164,7 @@ async def work_embed(ctx, action, value):
     await add_money(ctx.author, value)
     await ctx.channel.send(embed=embed)
 
+@slash.slash(name="work", description="Complete a shift - 20s cooldown")
 @client.command()
 @commands.cooldown(1, 20, commands.BucketType.user)
 async def work(ctx):
