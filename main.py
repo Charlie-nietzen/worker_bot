@@ -139,7 +139,7 @@ async def findjob(ctx):
 @slash.slash(name="apply", description="Apply for a specific job", options=[
                create_option(
                  name="job title",
-                 description="Enter the job title",
+                 description="Enter a job title",
                  option_type=3,
                  required=True,
                  choices=[
@@ -203,18 +203,10 @@ async def work(ctx: SlashContext):
     with open(path+r'/resources/user_data.json', 'r') as f:
             user_info = json.load(f)
 
-    # FASTFOOD START
-
     if user_info[str(ctx.author.id)]['career'] == 'Fastfood Cook':
         await work_embed(ctx, 'Burger Flipped', 3)
-
-    # CASHIER START
-
     elif user_info[str(ctx.author.id)]['career'] == 'Cashier':
         await work_embed(ctx, 'Shopping Scanned', 1)
-
-    # SHELF STOCKER START
-
     elif user_info[str(ctx.author.id)]['career'] == 'Shelf Stocker':
         await work_embed(ctx, 'Shelf Stacked', 2)
 
