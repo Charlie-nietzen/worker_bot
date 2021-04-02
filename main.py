@@ -6,6 +6,7 @@ import asyncio
 import discord
 
 from discord.ext import commands
+from discord_slash import SlashCommand, SlashContext
 
 name = 'Worker Bot'
 version = '1.0'
@@ -13,6 +14,7 @@ prefix = '$'
 
 path = os.path.dirname(os.path.abspath(__file__))
 client = commands.Bot(command_prefix=prefix)
+slash = SlashCommand(client)
 
 ### ERROR HANDLING
 
@@ -76,6 +78,7 @@ async def add_money(author, amount):
 
 ## FREELANCE COMMANDS START ##
 
+@slash.slash(name="Pickpocket", "Steal from a strangers pocket - 600s cooldown")
 @client.command()
 @commands.cooldown(1, 600, commands.BucketType.user)
 async def pickpocket(ctx):
