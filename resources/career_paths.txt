@@ -1,2 +1,34 @@
 # CAREER PATHS
 
+# FAST FOOD
+Lowest pay initially
+Highest pay by rank 15
+
+	COOKS
+		1: Trainee Cook
+		2: Junior Cook
+		3: Trained Cook
+		4: Senior Cook
+		5: Head Cook
+	MANAGEMENT
+		1: Trainee Manager
+		2: Junior Manager
+		3: Manager
+		4: Senior Manager
+		5: Head Manager
+	HEAD OFFICE
+		1: Vice Director 
+		2: Director
+		3: COO
+		4: CFO
+		5: CEO
+
+# CASHIER 
+	
+	CASHIERS
+		1: Trainee Cashier
+		2: Junior Cashier
+		3: Trained Cashier
+		4: Senior Cashier
+		5: Head Cashier
+	

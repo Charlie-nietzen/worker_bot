@@ -49,7 +49,7 @@ async def help(ctx):
     embed.add_field(name='Crime :knife:', value ='pickpocket\nbankrobbery\nhack\nsteal')
     embed.add_field(name='Stats :notepad_spiral:', value ='stats\nworkout\nlibary')
 
-    await ctx.send(hidden=True, embed=embed)
+    await ctx.send(embed=embed)
 
 ### CURRENCY COMMANDS  ###
 
