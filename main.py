@@ -14,7 +14,7 @@ prefix = '$'
 
 path = os.path.dirname(os.path.abspath(__file__))
 client = commands.Bot(command_prefix=prefix)
-slash = SlashCommand(client)
+slash = SlashCommand(client, sync_commands=True)
 
 ### ERROR HANDLING
 
