@@ -37,6 +37,7 @@ async def on_ready():
 ### HELP COMMAND
 
 client.remove_command('help')
+@slash.slash(name="help", description=f"See a list of {name}\'s commands")
 @client.command()
 async def help(ctx):
     embed = discord.Embed(
@@ -48,7 +49,7 @@ async def help(ctx):
     embed.add_field(name='Crime :knife:', value ='pickpocket\nbankrobbery\nhack\nsteal')
     embed.add_field(name='Stats :notepad_spiral:', value ='stats\nworkout\nlibary')
 
-    await ctx.send(embed=embed)
+    await ctx.send(hidden=True, embed=embed)
 
 ### CURRENCY COMMANDS START ###
 
