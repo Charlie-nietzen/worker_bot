@@ -7,6 +7,7 @@ import discord
 
 from discord.ext import commands
 from discord_slash import SlashCommand, SlashContext
+from discord_slash.utils.manage_commands import create_option, create_choice
 
 name = 'Worker Bot'
 version = '1.0'
@@ -136,7 +137,29 @@ async def findjob(ctx):
 
     await ctx.send(embed=job_menu)
 
-@slash.slash(name="apply", description="Apply for a specific job")
+@slash.slash(name="apply", description="Apply for a specific job", options=[
+               create_option(
+                 name="optone",
+                 description="Enter the job title",
+                 option_type=3,
+                 required=True,
+                 choices=[
+                  create_choice(
+                    name="one",
+                    value="Cashier"
+                  ),
+                  create_choice(
+                    name="two",
+                    value="Fastfood Cook"
+                  ),
+                  create_choice(
+                    name="three",
+                    value="Shelf Stocker"
+                  ),
+                ]
+               )
+             ])
+
 @client.command()
 async def apply(ctx: SlashContext, *, choice):
     await initialise(ctx.author)
