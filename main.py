@@ -89,7 +89,7 @@ async def add_money(author, amount):
 
 @slash.slash(name="pickpocket", description="Steal from a strangers pocket - 600s cooldown")
 @client.command()
-@commands.cooldown(1, 600, commands.BucketType.user)
+# @commands.cooldown(1, 600, commands.BucketType.user)
 async def pickpocket(ctx: SlashContext):
     await initialise(ctx.author)
 
