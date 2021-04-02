@@ -139,7 +139,7 @@ async def findjob(ctx):
 
 @slash.slash(name="apply", description="Apply for a specific job", options=[
                create_option(
-                 name="optone",
+                 name="choice",
                  description="Enter the job title",
                  option_type=3,
                  required=True,
@@ -161,7 +161,7 @@ async def findjob(ctx):
              ])
 
 @client.command()
-async def apply(ctx: SlashContext, *, choice):
+async def apply(ctx: SlashContext, *, choice: str):
     await initialise(ctx.author)
 
     with open(path+r'/resources/user_data.json', 'r') as f:
