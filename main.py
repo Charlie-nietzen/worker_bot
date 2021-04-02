@@ -81,7 +81,7 @@ async def add_money(author, amount):
 @slash.slash(name="pickpocket", description="Steal from a strangers pocket - 600s cooldown")
 @client.command()
 @commands.cooldown(1, 600, commands.BucketType.user)
-async def pickpocket(ctx):
+async def pickpocket(ctx: SlashContext):
     await initialise(ctx.author)
 
     victim = random.choice(victims)
@@ -128,9 +128,9 @@ async def findjob(ctx):
 
     await ctx.send(embed=job_menu)
 
-@slash.slash(name="apply", description="Apply for a job")
+@slash.slash(name="apply", description="Apply for a specific job")
 @client.command()
-async def apply(ctx, *, choice):
+async def apply(ctx: SlashContext, *, choice):
     await initialise(ctx.author)
 
     with open(path+r'/resources/user_data.json', 'r') as f:
@@ -167,7 +167,7 @@ async def work_embed(ctx, action, value):
 @slash.slash(name="work", description="Complete a shift - 20s cooldown")
 @client.command()
 @commands.cooldown(1, 20, commands.BucketType.user)
-async def work(ctx):
+async def work(ctx: SlashContext):
     await initialise(ctx.author)
 
     with open(path+r'/resources/user_data.json', 'r') as f:
