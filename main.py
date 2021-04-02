@@ -139,7 +139,7 @@ async def findjob(ctx):
 
 @slash.slash(name="apply", description="Apply for a specific job", options=[
                create_option(
-                 name="choice",
+                 name="job title",
                  description="Enter the job title",
                  option_type=3,
                  required=True,
@@ -161,17 +161,17 @@ async def findjob(ctx):
              ])
 
 @client.command()
-async def apply(ctx: SlashContext, *, choice: str):
+async def apply(ctx: SlashContext, *, job_title: str):
     await initialise(ctx.author)
 
     with open(path+r'/resources/user_data.json', 'r') as f:
             user_info = json.load(f)
 
-    if choice.lower() == 'cashier':
+    if job_title.lower() == 'cashier':
         title = 'Cashier'
-    elif choice.lower() == 'fastfood cook' or choice.lower() == 'cook':
+    elif job_title.lower() == 'fastfood cook' or job_title.lower() == 'cook':
         title = 'Fastfood Cook'
-    elif choice.lower() == 'stocker' or choice.lower() == 'shelf stocker':
+    elif job_title.lower() == 'stocker' or job_title.lower() == 'shelf stocker':
         title = 'Shelf Stocker'
     else: # job not found
         title = ''
