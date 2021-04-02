@@ -51,7 +51,7 @@ async def help(ctx):
 
     await ctx.send(hidden=True, embed=embed)
 
-### CURRENCY COMMANDS START ###
+### CURRENCY COMMANDS  ###
 
 cashier_employers = ['Lidl', 'Aldi', 'Sainsbury\'s', 'Morrison\'s', 'Tesco', 'Premier', 'Londis']
 fastfood_employers = ['KFC', 'McDonalds', 'Subway', 'Taco Bell']
@@ -86,7 +86,7 @@ async def add_money(author, amount):
             json.dump(user_info, f)
 
 
-## FREELANCE COMMANDS START ##
+## FREELANCE COMMANDS  ##
 
 @slash.slash(name="pickpocket", description="Steal from a strangers pocket - 600s cooldown")
 @client.command()
@@ -122,9 +122,7 @@ async def hack(ctx):
     embed = discord.Embed(colour=0x00ff55, title=f"{second}...",)
     await message.edit(embed=embed)
 
-## FREELANCE COMMANDS END ##
-
-## JOB COMMANDS START ## 
+## JOB COMMANDS  ## 
 
 @client.command(aliases=['job'])
 async def findjob(ctx):
@@ -210,25 +208,17 @@ async def work(ctx: SlashContext):
     if user_info[str(ctx.author.id)]['career'] == 'Fastfood Cook':
         await work_embed(ctx, 'Burger Flipped', 3)
 
-    # FASTFOOD END
-
     # CASHIER START
 
     elif user_info[str(ctx.author.id)]['career'] == 'Cashier':
         await work_embed(ctx, 'Shopping Scanned', 1)
-    
-    # CASHIER END
 
     # SHELF STOCKER START
 
     elif user_info[str(ctx.author.id)]['career'] == 'Shelf Stocker':
         await work_embed(ctx, 'Shelf Stacked', 2)
 
-    # SHELF STOCKER END
-
-## JOB COMMANDS END ## 
-
-## STAT COMMANDS START ##
+## STAT COMMANDS  ##
 
 @client.command()
 async def stats(message, member: typing.Union[discord.Member, str] = None):
@@ -257,7 +247,5 @@ async def stats(message, member: typing.Union[discord.Member, str] = None):
     stats.add_field(name='Rank', value=f'``{rank}``')
 
     await message.channel.send(embed=stats)
-
-## STAT COMMANDS END ##
 
 client.run(os.environ['DISCORD_TOKEN'])
