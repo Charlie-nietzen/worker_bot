@@ -79,7 +79,6 @@ async def add_money(author, amount):
 ## FREELANCE COMMANDS START ##
 
 @slash.slash(name="Pickpocket", description="Steal from a strangers pocket - 600s cooldown")
-@client.command()
 @commands.cooldown(1, 600, commands.BucketType.user)
 async def pickpocket(ctx):
     await initialise(ctx.author)
