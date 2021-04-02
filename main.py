@@ -16,6 +16,8 @@ path = os.path.dirname(os.path.abspath(__file__))
 client = commands.Bot(command_prefix=prefix)
 slash = SlashCommand(client, sync_commands=True)
 
+logs_channel = 827560186020626443
+
 ### ERROR HANDLING
 
 @client.event
@@ -24,6 +26,12 @@ async def on_command_error(ctx, error):
     err = await ctx.channel.send(f'{ctx.author.mention} ``{error}``')
     await asyncio.sleep(3)
     await err.delete()
+
+## START MESSAGE
+
+@client.event
+async def on_ready():
+    await client.get_channel(logs_channel).send('Ready')
 
 ### HELP COMMAND
 
