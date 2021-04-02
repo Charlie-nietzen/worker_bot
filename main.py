@@ -197,7 +197,7 @@ async def work_embed(ctx, action, value):
 @slash.slash(name="work", description="Complete a shift - 20s cooldown")
 @client.command()
 @commands.cooldown(1, 20, commands.BucketType.user)
-async def work(ctx: SlashContext):
+async def work(ctx):
     await initialise(ctx.author)
 
     with open(path+r'/resources/user_data.json', 'r') as f:
