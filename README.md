@@ -1,0 +1,2 @@
+# worker_bot
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/20580df69e8f43d79281ab481e322c02)](https://app.codacy.com/gh/Charlie-nietzen/worker_bot?utm_source=github.com&utm_medium=referral&utm_content=Charlie-nietzen/worker_bot&utm_campaign=Badge_Grade_Settings)
