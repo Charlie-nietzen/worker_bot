@@ -124,6 +124,7 @@ async def hack(ctx):
 
 ## JOB COMMANDS  ## 
 
+@slash.slash(name="jobs", description="Display a list of available jobs")
 @client.command(aliases=['job'])
 async def findjob(ctx):
     await initialise(ctx.author)
