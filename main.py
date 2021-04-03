@@ -32,7 +32,14 @@ async def on_command_error(ctx, error):
 
 @client.event
 async def on_ready():
-    await client.get_channel(logs_channel).send('Ready')
+    with open(path+r'/resources/iteration.json', 'r') as f:
+            it = json.load(f)
+
+    it['iteration'] += 1
+    await client.get_channel(logs_channel).send(f"Initialised iteration v{it['iteration']}")
+
+    with open(path+r'/resources/iteration.json', 'w') as f:
+            json.dump(it, f)
 
 ### HELP COMMAND
 
