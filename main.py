@@ -138,7 +138,7 @@ async def findjob(ctx):
 
 @slash.slash(name="apply", description="Apply for a specific job", options=[
                create_option(
-                 name="job title",
+                 name="title",
                  description="Enter a job title",
                  option_type=3,
                  required=True,
@@ -158,19 +158,18 @@ async def findjob(ctx):
                 ]
                )
              ])
-
 @client.command()
-async def apply(ctx: SlashContext, *, job_title: str):
+async def apply(ctx: SlashContext, *, title: str):
     await initialise(ctx.author)
 
     with open(path+r'/resources/user_data.json', 'r') as f:
             user_info = json.load(f)
 
-    if job_title.lower() == 'cashier':
+    if title.lower() == 'cashier':
         title = 'Cashier'
-    elif job_title.lower() == 'fastfood cook' or job_title.lower() == 'cook':
+    elif title.lower() == 'fastfood cook' or title.lower() == 'cook':
         title = 'Fastfood Cook'
-    elif job_title.lower() == 'stocker' or job_title.lower() == 'shelf stocker':
+    elif title.lower() == 'stocker' or title.lower() == 'shelf stocker':
         title = 'Shelf Stocker'
     else: # job not found
         title = ''
@@ -197,7 +196,7 @@ async def work_embed(ctx, action, value):
 @slash.slash(name="work", description="Complete a shift - 20s cooldown")
 @client.command()
 @commands.cooldown(1, 20, commands.BucketType.user)
-async def work(ctx):
+async def work(ctx: SlashContext):
     await initialise(ctx.author)
 
     with open(path+r'/resources/user_data.json', 'r') as f:
