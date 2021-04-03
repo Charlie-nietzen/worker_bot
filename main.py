@@ -14,7 +14,7 @@ version = '1.0'
 prefix = '$'
 
 path = os.path.dirname(os.path.abspath(__file__))
-client = commands.Bot(command_prefix=prefix)
+client = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
 slash = SlashCommand(client, sync_commands=True)
 
 logs_channel = 827560186020626443
