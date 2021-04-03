@@ -36,7 +36,7 @@ async def on_ready():
             it = json.load(f)
 
     it['iteration'] += 1
-    await client.get_channel(logs_channel).send(f"Initialised iteration v{it['iteration']}")
+    await client.get_channel(logs_channel).send(f"Initialised iteration ``v{it['iteration']}``")
 
     with open(path+r'/resources/iteration.json', 'w') as f:
             json.dump(it, f)
