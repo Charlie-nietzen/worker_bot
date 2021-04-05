@@ -248,7 +248,7 @@ async def stats(message, member: typing.Union[discord.Member, str] = None):
     await message.channel.send(embed=stats)
 
 @slash.slash(name="test")
-async def test(ctx: SlashContext):
+async def test(ctx):
     await ctx.channel.send("Hello")
 
 client.run(os.environ['DISCORD_TOKEN'])
